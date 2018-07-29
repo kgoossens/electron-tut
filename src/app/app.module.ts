@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AddressServiceProvider } from '../providers/address-service/address-service';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,9 @@ import { HomePage } from '../pages/home/home';
     HomePage
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA_aewBrJbvFpHq9W5pDmkpTakf1y6VqBs'
+    }),
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -24,7 +29,8 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AddressServiceProvider
   ]
 })
 export class AppModule {}
